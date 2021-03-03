@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/projectSettingsUpdater.xml
+/.idea.Good Morning Commander.iml
+/contentModel.xml
+# Datasource local storage ignored files
+/../../../../../../../:\UnityProjects\Good-Morning-Commander\Good Morning Commander\.idea\.idea.Good Morning Commander\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
