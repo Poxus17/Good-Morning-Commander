@@ -7,25 +7,28 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent navMeshAgent;
     Camera cam;
-    bool isMoving;
-    
+    bool isMoving = false;
+
     public delegate void MoveStatusChange(bool status);
     public static event MoveStatusChange OnMoveStatusChanged;
 
-    //bool allowCouch = false;
-    public GameObject canvasObject;
-    bool isCanvas = false;
-        
-    // Start is called before the first frame update
+    public GameObject dialogueCanvas;
+    bool dialogueVisible = false;
+
+    public GameObject computerCanvas;
+    bool computerVisible = false;
+
+    public GameObject brainCanvas;
+    bool brainVisible = false;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
-        isMoving = false;
-        canvasObject.SetActive(false);
+        dialogueCanvas.SetActive(false);
+        computerCanvas.SetActive(false);
+        brainCanvas.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -48,9 +51,22 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
+                if (dialogueVisible == true)
+                {
+                    { dialogueCanvas.SetActive(false); dialogueVisible = false; }
+                }
+                if (computerVisible == true)
+                {
+                    { computerCanvas.SetActive(false); computerVisible = false; }
+                }
+                if (brainVisible == true)
+                {
+                    { brainCanvas.SetActive(false); brainVisible = false; }
+                }
+
                 navMeshAgent.SetDestination(hit.point);
                 isMoving = true;
-
+                
                 if (OnMoveStatusChanged != null)
                 {
                     OnMoveStatusChanged(true);
@@ -58,20 +74,42 @@ public class PlayerController : MonoBehaviour
 
                 if (hit.transform.tag == "Couch")
                 {
-                    //Ink on/off code goes here?
                     Debug.Log("[Couch] (Ink on/off code)");
-                    MakeActive();
+                    MakeActive_Dialogue();
+                }
+
+                if (hit.transform.tag == "Computer")
+                {
+                    Debug.Log("[Computer] (Ink on/off code)");
+                    MakeActive_Computer();
+                    MakeActive_Brain();
                 }
             }
         }
 
-        void MakeActive()
+        void MakeActive_Dialogue()
         {
-            if (isCanvas == false)
-            { canvasObject.SetActive(true); isCanvas = true; return;} 
-            if (isCanvas == true)
-            { canvasObject.SetActive(false); isCanvas = false; } 
+            if (dialogueVisible == false)
+            { dialogueCanvas.SetActive(true); dialogueVisible = true; return;} 
+            if (dialogueVisible == true)
+            { dialogueCanvas.SetActive(false); dialogueVisible = false; } 
         }
+
+        void MakeActive_Computer()
+        {
+            if (computerVisible == false)
+            { computerCanvas.SetActive(true); computerVisible = true; return; }
+            if (computerVisible == true)
+            { computerCanvas.SetActive(false); computerVisible = false; }
+        }
+        void MakeActive_Brain()
+        {
+            if (brainVisible == false)
+            { brainCanvas.SetActive(true); brainVisible = true; return; }
+            if (brainVisible == true)
+            { brainCanvas.SetActive(false); brainVisible = false; }
+        }
+        //bool allowCouch = false;
 
         //void OnCollisionEnter(Collision collision)
         //{
@@ -86,4 +124,4 @@ public class PlayerController : MonoBehaviour
 
 
     }
-    }
+}
