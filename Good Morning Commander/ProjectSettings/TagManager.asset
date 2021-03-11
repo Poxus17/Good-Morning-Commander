@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Couch
   - Computer
+  - Dimmer
   layers:
   - Default
   - TransparentFX

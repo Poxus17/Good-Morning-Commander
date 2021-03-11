@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
     public GameObject brainCanvas;
     bool brainVisible = false;
 
+    bool activeDimmer;
+
+    public delegate void Dim(float factor);
+    public static event Dim OnDim;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -28,6 +33,8 @@ public class PlayerController : MonoBehaviour
         dialogueCanvas.SetActive(false);
         computerCanvas.SetActive(false);
         brainCanvas.SetActive(false);
+
+        activeDimmer = false;
     }
     void Update()
     {
@@ -51,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
+                #region Disable all active dialog
                 if (dialogueVisible == true)
                 {
                     { dialogueCanvas.SetActive(false); dialogueVisible = false; }
@@ -63,6 +71,7 @@ public class PlayerController : MonoBehaviour
                 {
                     { brainCanvas.SetActive(false); brainVisible = false; }
                 }
+                #endregion
 
                 navMeshAgent.SetDestination(hit.point);
                 isMoving = true;
@@ -72,18 +81,39 @@ public class PlayerController : MonoBehaviour
                     OnMoveStatusChanged(true);
                 }
 
-                if (hit.transform.tag == "Couch")
+                if (hit.transform.tag == "Couch") //Activate psychology session
                 {
                     Debug.Log("[Couch] (Ink on/off code)");
                     MakeActive_Dialogue();
                 }
 
-                if (hit.transform.tag == "Computer")
+                if (hit.transform.tag == "Computer") //Activate Work Terminal
                 {
                     Debug.Log("[Computer] (Ink on/off code)");
                     MakeActive_Computer();
                     MakeActive_Brain();
                 }
+
+                if(hit.transform.tag == "Dimmer")
+                {
+                    activeDimmer = true;
+                }
+
+            }
+
+            
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            activeDimmer = false;
+        }
+
+        if (activeDimmer)
+        {
+            if(OnDim != null) //If this event has subscribers
+            {
+                OnDim(Input.GetAxis("Mouse Y"));
             }
         }
 
