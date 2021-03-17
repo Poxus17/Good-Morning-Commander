@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public delegate void Dim(float factor);
     public static event Dim OnDim;
 
+    public GameObject indicatorPrefab;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -43,10 +45,10 @@ public class PlayerController : MonoBehaviour
         {
             if (navMeshAgent.remainingDistance == 0)
             {
+                isMoving = false;
                 if (OnMoveStatusChanged != null)
                 {
                     OnMoveStatusChanged(false);
-                    isMoving = false;
                 }
             }
         }
@@ -80,6 +82,8 @@ public class PlayerController : MonoBehaviour
                 {
                     OnMoveStatusChanged(true);
                 }
+
+                Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
 
                 if (hit.transform.tag == "Couch") //Activate psychology session
                 {
