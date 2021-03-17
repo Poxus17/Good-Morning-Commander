@@ -2,15 +2,19 @@
 using UnityEngine.UI;
 using System;
 using Ink.Runtime;
+using System.Collections;
 
 // This is a super bare bones example of how to play and display a ink story in Unity.
 public class BasicInkExample : MonoBehaviour {
     public static event Action<Story> OnCreateStory;
+	public float textDelay;
+	AudioSource audioSource; //Audiosource.
 	
     void Awake () {
 		// Remove the default message
 		RemoveChildren();
 		StartStory();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
@@ -66,9 +70,20 @@ public class BasicInkExample : MonoBehaviour {
 	// Creates a textbox showing the the line of text
 	void CreateContentView (string text) {
 		Text storyText = Instantiate (textPrefab) as Text;
-		storyText.text = text;
+		//storyText.text = text;
+		StartCoroutine(DisplayText(storyText, text));
 		storyText.transform.SetParent (canvas.transform, false);
 	}
+
+	IEnumerator DisplayText(Text textElement, string text)
+    {
+		for(int i =0; i<text.Length; i++)
+        {
+			textElement.text += text[i];
+			audioSource.Play();
+			yield return new WaitForSeconds(textDelay);
+        }
+    }
 
 	// Creates a button showing the choice text
 	Button CreateChoiceView (string text) {
