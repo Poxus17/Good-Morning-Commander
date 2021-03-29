@@ -973,6 +973,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayManager: {fileID: 503524659}
+--- !u!65 &1319646079
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319646077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10250756, y: 0.392124, z: 0.03660061}
+  m_Center: {x: -0.033250395, y: 0.12976286, z: 0.00026121238}
 --- !u!1 &1346134200
 GameObject:
   m_ObjectHideFlags: 0
