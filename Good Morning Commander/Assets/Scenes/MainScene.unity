@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDelay: 0.06
-  inkJSONAsset: {fileID: 4900000, guid: a02120f852213fc459d1a3ab42e9f270, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 370f08bed6f6db04db7ca4dc0debb72d, type: 3}
   canvas: {fileID: 1261360524}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
