@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         dialogueCanvas.SetActive(false);
         computerCanvas.SetActive(false);
-        brainCanvas.SetActive(false);
+        //brainCanvas.SetActive(false);
 
         activeDimmer = false;
     }
