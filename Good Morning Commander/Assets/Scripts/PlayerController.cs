@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public static event Dim OnDim;
 
     public GameObject indicatorPrefab;
+    GameObject indicatorRef;
 
     void Start()
     {
@@ -83,7 +84,14 @@ public class PlayerController : MonoBehaviour
                     OnMoveStatusChanged(true);
                 }
 
-                Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
+                if(indicatorRef == null)
+                {
+                    indicatorRef = Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
+                }
+                else
+                {
+                    indicatorRef.transform.position = hit.point;
+                }
 
                 if (hit.transform.tag == "Couch") //Activate psychology session
                 {
