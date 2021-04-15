@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
         CameraTrigger.OnTriggered += MoveTo;
         inTransition = false;
         camPosPoint = new Vector3(19, 8, -19);
+        transform.localPosition = new Vector3(19, 8, -19);
     }
 
     void MoveTo(Vector3 pos)
