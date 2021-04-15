@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
     public static event MoveStatusChange OnMoveStatusChanged;
 
     public GameObject dialogueCanvas;
-    bool dialogueVisible = false;
+    public bool dialogueVisible = false;
 
     public GameObject computerCanvas;
-    bool computerVisible = false;
+    public bool computerVisible = false;
 
     public GameObject brainCanvas;
-    bool brainVisible = false;
+    public bool brainVisible = false;
 
     bool activeDimmer;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         dialogueCanvas.SetActive(false);
         computerCanvas.SetActive(false);
-        //brainCanvas.SetActive(false);
+        brainCanvas.SetActive(false);
 
         activeDimmer = false;
     }
@@ -53,8 +53,12 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleActive_Brain();
+        }
 
-        if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -96,18 +100,25 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Couch") //Activate psychology session
                 {
                     Debug.Log("[Couch] (Ink on/off code)");
-                    MakeActive_Dialogue();
+                    ToggleActive_Dialogue();
+                    if (brainVisible == true)
+                    {
+                        ToggleActive_Brain();
+                    }
                 }
 
                 if (hit.transform.tag == "Computer") //Activate Work Terminal
                 {
                     Debug.Log("[Computer] (Ink on/off code)");
-                    MakeActive_Computer();
-                    MakeActive_Brain();
-                }
+                    ToggleActive_Computer();
+                    if(brainVisible == true)
+                    {
+                        ToggleActive_Brain();
+                    }
+                }                    
 
                 if(hit.transform.tag == "Dimmer")
-                {
+                {                                                
                     activeDimmer = true;
                 }
 
@@ -129,7 +140,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        void MakeActive_Dialogue()
+        void ToggleActive_Dialogue()
         {
             if (dialogueVisible == false)
             { dialogueCanvas.SetActive(true); dialogueVisible = true; return;} 
@@ -137,14 +148,14 @@ public class PlayerController : MonoBehaviour
             { dialogueCanvas.SetActive(false); dialogueVisible = false; } 
         }
 
-        void MakeActive_Computer()
+        void ToggleActive_Computer()
         {
             if (computerVisible == false)
             { computerCanvas.SetActive(true); computerVisible = true; return; }
             if (computerVisible == true)
             { computerCanvas.SetActive(false); computerVisible = false; }
         }
-        void MakeActive_Brain()
+        void ToggleActive_Brain()
         {
             if (brainVisible == false)
             { brainCanvas.SetActive(true); brainVisible = true; return; }
