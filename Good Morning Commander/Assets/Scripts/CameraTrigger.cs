@@ -19,8 +19,10 @@ public class CameraTrigger : MonoBehaviour
             OnTriggered(TriggerPosition);
         }
     }
-    private void OnCollisionExit(Collision collision)
+
+    private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Out");
         inCollision = false;
     }
 }

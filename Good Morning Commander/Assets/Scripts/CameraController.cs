@@ -7,18 +7,22 @@ public class CameraController : MonoBehaviour
 
     public float transitionTime;
     bool inTransition;
+    Vector3 camPosPoint;
 
     // Start is called before the first frame update
     void Start()
     {
         CameraTrigger.OnTriggered += MoveTo;
         inTransition = false;
+        camPosPoint = new Vector3(19, 8, -19);
     }
 
     void MoveTo(Vector3 pos)
     {
-        if (!inTransition && pos != transform.localPosition)
+        if (!inTransition && pos != camPosPoint)
         {
+            Debug.Log(pos);
+            camPosPoint = pos;
             IEnumerator coroutine = transitionToTrigger(pos);
             StartCoroutine(coroutine);
         }
