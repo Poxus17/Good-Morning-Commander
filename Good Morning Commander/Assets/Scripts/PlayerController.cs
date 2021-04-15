@@ -27,11 +27,9 @@ public class PlayerController : MonoBehaviour
     public static event Dim OnDim;
 
     public GameObject indicatorPrefab;
-    public RoutineMngr routineMngr;
-    public BasicInkExample inkComm;
+
     void Start()
     {
-        routineMngr.routine.State = "Work";
         navMeshAgent = GetComponent<NavMeshAgent>();
         cam = Camera.main;
         dialogueCanvas.SetActive(false);
@@ -58,12 +56,8 @@ public class PlayerController : MonoBehaviour
         {
             ToggleActive_Brain();
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log(routineMngr.routine.State);
-        }
 
-        if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -95,22 +89,17 @@ public class PlayerController : MonoBehaviour
 
                 Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
 
-                if (hit.transform.tag == "Couch" && routineMngr.routine.State == "Psych") //Activate psychology session
+                if (hit.transform.tag == "Couch") //Activate psychology session
                 {
                     Debug.Log("[Couch] (Ink on/off code)");
                     ToggleActive_Dialogue();
-                    inkComm.StartStory();
                     if (brainVisible == true)
                     {
                         ToggleActive_Brain();
                     }
                 }
-                //if (hit.transform.tag == "Couch" && routineMngr.routine.State == "Work") //wrong routine 
-                //{
-                //    Debug.Log("YOU SHOULD GO TO WORK BEFORE VISITING THE PSYCH");
-                //}
 
-                if (hit.transform.tag == "Computer" && routineMngr.routine.State == "Work") //Activate Work Terminal
+                if (hit.transform.tag == "Computer") //Activate Work Terminal
                 {
                     Debug.Log("[Computer] (Ink on/off code)");
                     ToggleActive_Computer();
@@ -118,19 +107,9 @@ public class PlayerController : MonoBehaviour
                     {
                         ToggleActive_Brain();
                     }
-                }
+                }                    
 
-                //if (hit.transform.tag == "Computer" && routineMngr.routine.State == "Psych") //wrong routine
-                //{
-                //    Debug.Log("WORKDAY IS OVER, YOU SHOULD VISIT THE PSYCH");
-                //}
-
-                if (hit.transform.tag == "Bed" && routineMngr.routine.State == "Sleep") //Activate Work Terminal
-                {
-                    routineMngr.routine.State = "Work";
-                }
-
-                if (hit.transform.tag == "Dimmer")
+                if(hit.transform.tag == "Dimmer")
                 {                                                
                     activeDimmer = true;
                 }

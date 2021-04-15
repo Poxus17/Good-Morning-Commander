@@ -325,7 +325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 912, y: 86}
+  m_AnchoredPosition: {x: -310, y: -278}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &374365059
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: test
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -143.5018, y: -55.12318, z: 150.89694, w: -162.65047}
+  m_margin: {x: -418.7094, y: -48.680977, z: -923.7589, w: 33.501118}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -524,7 +524,7 @@ RectTransform:
   m_GameObject: {fileID: 503524654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8078679, y: 0.78002, z: 1}
+  m_LocalScale: {x: 0.996138, y: 1, z: 1}
   m_Children:
   - {fileID: 1612710268}
   m_Father: {fileID: 1537498217}
@@ -532,7 +532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 785, y: 271.93347}
+  m_AnchoredPosition: {x: 956.28, y: 271.93347}
   m_SizeDelta: {x: 1920.0001, y: 543.86694}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &503524656
@@ -724,11 +724,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Couch
       objectReference: {fileID: 0}
-    - target: {fileID: 6479137908180158667, guid: 25afcb95fdb804d4aae553867ab265af,
-        type: 3}
-      propertyPath: m_TagString
-      value: Bed
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25afcb95fdb804d4aae553867ab265af, type: 3}
 --- !u!1 &857408774
@@ -772,8 +767,6 @@ MonoBehaviour:
   brainVisible: 0
   indicatorPrefab: {fileID: 3364295410263565088, guid: d01013214251d3d42a10446c7450df0a,
     type: 3}
-  routineMngr: {fileID: 1656134933}
-  inkComm: {fileID: 1261360523}
 --- !u!136 &857408776
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -905,7 +898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 899, y: 220}
+  m_AnchoredPosition: {x: 899, y: 210}
   m_SizeDelta: {x: 1920, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185619777
@@ -1033,8 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textDelay: 0.06
-  routineMngr: {fileID: 1656134933}
-  inkJSONAsset: {fileID: 4900000, guid: ac1bc22f347c471449c711c828098bf2, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 370f08bed6f6db04db7ca4dc0debb72d, type: 3}
   canvas: {fileID: 1261360524}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
@@ -1460,7 +1452,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612710267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4.7122917, y: 4.7122917, z: 4.7122917}
   m_Children: []
   m_Father: {fileID: 503524655}
@@ -1468,7 +1460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 33, y: 43}
+  m_AnchoredPosition: {x: -4, y: -36}
   m_SizeDelta: {x: 962.00006, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612710270
@@ -1490,17 +1482,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<link=SolfieldID><color=blue>Solfield</color></link>,  <link=SixAM><color=blue>SixAM</color></link>,
-    then more text. \r\n\r\nGood morning, Commander. Mars is planning to assassinate
-    Terran General Henry Vizan with minimum collateral damage. Unfortunately, he
-    works in the <b>United Nations building</b>. He arrives to work every day at
-    <b>08:00</b> and leaves not before <b>19:00</b>. Once every week, he inspects
-    ongoing procedures at the nearby <link=SolfieldID><color=blue>Solfield military
-    base</color></link>,  where he is taken by car at <b><link=SixAM>06:00</link></b>.
-    He lives in a densely populated area, where he returns every day at about <b>20:00</b>,
-    but has also been known to visit a mistress <b>in a distant suburb</b> at about
-    20:00, in which case he returns home around <b>01:00</b>. \r\n\r\nMars is asking
-    <b>when</b>  and <b>where</b> should our drones strike.\r"
+  m_text: "Here is a <link=linkID1><color=blue>first link</color></link>, regular
+    text, then a <link=linkID2><color=blue>second link</color></link>, then more
+    text. \n\n<color=green>Press M to think about words ! </color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1527,8 +1511,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7
-  m_fontSizeBase: 7
+  m_fontSize: 7.23
+  m_fontSizeBase: 7.23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1563,7 +1547,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 501.15417, y: 37.046192, z: 82.12659, w: -79.19345}
+  m_margin: {x: 489.59985, y: 41.55983, z: 95.7108, w: -51.35919}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1588,7 +1572,6 @@ GameObject:
   - component: {fileID: 1656134931}
   - component: {fileID: 1656134930}
   - component: {fileID: 1656134932}
-  - component: {fileID: 1656134933}
   m_Layer: 0
   m_Name: DataScripts
   m_TagString: Untagged
@@ -1609,45 +1592,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   words:
-  - LinkId: SolfieldID
-    Name: Solfield
-    Description: Solfield military base
-    Sprite: {fileID: 0}
-  - LinkId: SixAM
-    Name: SixAM
-    Description: SixAM Desc
-    Sprite: {fileID: 0}
   - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
-    Sprite: {fileID: 0}
-  - LinkId: linkID3
-    Name: Link1
-    Description: linkdesc
+    Name: Word01
+    Description: Word01 Desc
     Sprite: {fileID: 0}
   - LinkId: linkID2
-    Name: Link2
-    Description: linkdesc
+    Name: Word02
+    Description: Word02 Desc
     Sprite: {fileID: 0}
-  - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
-    Sprite: {fileID: 0}
-  - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
-    Sprite: {fileID: 0}
-  - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
-    Sprite: {fileID: 0}
-  - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
-    Sprite: {fileID: 0}
-  - LinkId: linkID1
-    Name: Link1
-    Description: linkdesc
+  - LinkId: Apple
+    Name: AppleResult
+    Description: AppleDesc
     Sprite: {fileID: 0}
 --- !u!4 &1656134931
 Transform:
@@ -1678,18 +1633,6 @@ MonoBehaviour:
   day: 401
   MinDay: 5
   MaxDay: 61
---- !u!114 &1656134933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656134929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c216b9237c2080f46b6d53f499944b73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1762005829
 GameObject:
   m_ObjectHideFlags: 0

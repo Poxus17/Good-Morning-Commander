@@ -1,19 +1,34 @@
 //EXTERNAL playFunc(varName)
 VAR Bool_Name = false
--> good_evening
+-> dialogue
 
-=== good_evening ===
-Good evening, Thomas. How are you feeling today?
-* [It's not easy for me to be here, ATOS.] -> anger
+=== dialogue ===
+
+* [Start] -> AnswerA
 //* [Answer B] -> AnswerB
 
 //////////////////////////////////////////////////////////////////////////////////
 
-=== anger ===
+=== AnswerA ===
 
-I know, Thomas. The orbital life is not for everyone. But when you knew when you signed up for the Rangers that you can only serve on the front for a limited time, right?
+Here is a <link=linkID1><color=blue>first link</color></link>, regular text, then a <link=linkID2><color=blue>second link</color></link>, then more text.
 
--> END
+* [Answer A]  -> G1
+* [Answer B]  -> G2
+
+=== G1 ===
+~ Bool_Name = true
+Here is an <link=Apple><color=blue>Apple</color></link>. 
+-> Ending01
+=== G2 ===
+~ Bool_Name = false
+(Bool set false)
+    -> Ending01
+ 
+=== Ending01 ===
+
+*	{ not Bool_Name } Bool Check[] FALSE -> DONE
+* 	{ Bool_Name} Bool Check[] TRUE -> END
 
 //////////////////////////////////////////////////////////////////////////////////
 
