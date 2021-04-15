@@ -1,4 +1,5 @@
 //EXTERNAL playFunc(varName)
+<<<<<<< HEAD
 
 -> dialogue
 
@@ -8,10 +9,19 @@ VAR Bool_Name = false
 (Bool declared)
 
 * [Bool Test] -> AnswerA
+=======
+VAR Bool_Name = false
+-> good_evening
+
+=== good_evening ===
+Good evening, Thomas. How are you feeling today?
+* [It's not easy for me to be here, ATOS.] -> anger
+>>>>>>> parent of c8edddb (Revert "TMP Fixes")
 //* [Answer B] -> AnswerB
 
 //////////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD
 === AnswerA ===
 
 (Dialogue)
@@ -29,9 +39,13 @@ VAR Bool_Name = false
     -> Ending01
  
 === Ending01 ===
+=======
+=== anger ===
 
-*	{ not Bool_Name } Bool Check[] FALSE -> DONE
-* 	{ Bool_Name} Bool Check[] TRUE -> END
+I know, Thomas. The orbital life is not for everyone. But when you knew when you signed up for the Rangers that you can only serve on the front for a limited time, right?
+>>>>>>> parent of c8edddb (Revert "TMP Fixes")
+
+-> END
 
 //////////////////////////////////////////////////////////////////////////////////
 
