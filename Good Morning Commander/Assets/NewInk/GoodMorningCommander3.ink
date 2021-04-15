@@ -3,7 +3,7 @@
 -> dialogue
 
 === dialogue ===
-1 Dialogue introduction.
+Dialogue introduction.
 VAR Bool_Name = false
 (Bool declared)
 
