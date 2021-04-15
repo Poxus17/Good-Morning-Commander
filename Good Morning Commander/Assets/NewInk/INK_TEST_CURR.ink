@@ -1,25 +1,28 @@
 //EXTERNAL playFunc(varName)
-VAR Bool_Name = false
+
 -> dialogue
 
 === dialogue ===
+Dialogue introduction.
+VAR Bool_Name = false
+(Bool declared)
 
-* [Start] -> AnswerA
+* [Bool Test] -> AnswerA
 //* [Answer B] -> AnswerB
 
 //////////////////////////////////////////////////////////////////////////////////
 
 === AnswerA ===
 
-Here is a <link=linkID1><color=blue>first link</color></link>, regular text, then a <link=linkID2><color=blue>second link</color></link>, then more text.
+(Dialogue)
 
-* [Answer A]  -> G1
-* [Answer B]  -> G2
+* [Make bool true]  -> G1
+* [Keep bool false]  -> G2
 
 === G1 ===
 ~ Bool_Name = true
-Here is an <link=Apple><color=blue>Apple</color></link>. 
--> Ending01
+(Bool set true)
+    -> Ending01
 === G2 ===
 ~ Bool_Name = false
 (Bool set false)

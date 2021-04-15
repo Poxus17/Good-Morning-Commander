@@ -9,7 +9,6 @@ using TMPro;
 public class BasicInkExample : MonoBehaviour {
 	public static event Action<Story> OnCreateStory;
 	public float textDelay;
-	//public TextClicker textClicker;
 	AudioSource audioSource; //Audiosource.
 
 	void Awake() {
@@ -102,30 +101,20 @@ public class BasicInkExample : MonoBehaviour {
 	// Creates a textbox showing the the line of text
 	void CreateContentView (string text) {
 		TMP_Text storyText = Instantiate (textPrefab, canvas.transform, false);
-		//textClicker.thisText = storyText;
-
+		
 		//storyTMP_Text.text = text;
 		StartCoroutine(DisplayTMP_Text(storyText, text));
 	}
 
-	//IEnumerator DisplayTMP_Text(TMP_Text textElement, string text)
- //   {
-	//	for(int i =0; i<text.Length; i++)
- //       {
-	//		textElement.text += text[i];
-	//		//audioSource.Play();
-	//		yield return new WaitForSeconds(textDelay);
- //       }
- //   }
-
 	IEnumerator DisplayTMP_Text(TMP_Text textElement, string text)
-	{
-
-		textElement.text = text;
-		audioSource.Play();
-		yield return new WaitForSeconds(textDelay);
-
-	}
+    {
+		for(int i =0; i<text.Length; i++)
+        {
+			textElement.text += text[i];
+			//audioSource.Play();
+			yield return new WaitForSeconds(textDelay);
+        }
+    }
 
 	// Creates a button showing the choice text
 	Button CreateChoiceView (string text) {
@@ -150,7 +139,7 @@ public class BasicInkExample : MonoBehaviour {
 		for (int i = childCount - 1; i >= 0; --i) {
 			GameObject.Destroy (canvas.transform.GetChild (i).gameObject);
 		}
-	}        
+	}
 
 	[SerializeField]
 	private TextAsset inkJSONAsset = null;
