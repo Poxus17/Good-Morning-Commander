@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 179344679f08d4243a22b161a2b41e61, type: 2}
+  - {fileID: 2100000, guid: 7df31356eb229444f933e295f5acb7b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,4 +95,4 @@ MonoBehaviour:
   floatModifier: 0.3
   floatSpeed: 2
   baseY: 1
-  defaultRotation: {x: 90, y: 0, z: 0}
+  defaultRotation: {x: 90, y: 0, z: 0, w: 0}
