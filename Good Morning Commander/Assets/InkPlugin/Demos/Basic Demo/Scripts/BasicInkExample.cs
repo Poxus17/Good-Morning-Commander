@@ -9,7 +9,9 @@ using TMPro;
 public class BasicInkExample : MonoBehaviour {
 	public static event Action<Story> OnCreateStory;
 	public float textDelay;
-	AudioSource audioSource; //Audiosource.
+	AudioSource audioSource;
+	public RoutineMngr routineMngr;
+
 
 	void Awake() {
 		// Remove the default message
@@ -20,7 +22,7 @@ public class BasicInkExample : MonoBehaviour {
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
-	void StartStory() {
+	public void StartStory() {
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
 		Ink_Unity_Comm_Handler();
@@ -62,35 +64,38 @@ public class BasicInkExample : MonoBehaviour {
 		}
 
 		// If we've read all the content and there's no choices, the story is finished!
-		else {
-			Button choice = CreateChoiceView("End of story.\nRestart?");
+		else 
+		{			
+			Button choice = CreateChoiceView("Hmm..");
 			choice.onClick.AddListener(delegate {
-				StartStory();
+				//StartStory();
+				RemoveChildren();
+				CreateContentView("End of psych \nsession");
+				routineMngr.routine.State = "Sleep";
+
 			});
+			
 		}
 	}
 	
 	void Ink_Unity_Comm_Handler()
 	{
-		story.ObserveVariable("Bool_Name", (string varName, object newValue) =>
+		story.ObserveVariable("State_Name", (string varName, object newValue) =>
 		{
-			TestFunc_02(varName, (bool)newValue);
+			//TestFunc_02(varName, (bool)newValue);
 		});
 
-		/*story.BindExternalFunction("InkFunc", (string boolName) => {
-			TestFunc_01(boolName);
-		});*/
 	}
 
-	void TestFunc_02(string varName, bool newValue)
-    {
-		Debug.Log("Value of" + varName + " from Ink : " + newValue);
-	}
+	//void TestFunc_02(string varName, bool newValue)
+ //   {
+	//	Debug.Log("Value of" + varName + " from Ink : " + newValue);
+	//}
 	
-	void TestFunc_01(string boolName)
-	{
-		Debug.Log(boolName);
-	}
+	//void TestFunc_01(string boolName)
+	//{
+	//	Debug.Log(boolName);
+	//}
 
 	// When we click the choice button, tell the story to choose that choice!
 	void OnClickChoiceButton (Choice choice) {
@@ -101,20 +106,30 @@ public class BasicInkExample : MonoBehaviour {
 	// Creates a textbox showing the the line of text
 	void CreateContentView (string text) {
 		TMP_Text storyText = Instantiate (textPrefab, canvas.transform, false);
-		
+		//textClicker.thisText = storyText;
+
 		//storyTMP_Text.text = text;
 		StartCoroutine(DisplayTMP_Text(storyText, text));
 	}
 
+	//IEnumerator DisplayTMP_Text(TMP_Text textElement, string text)
+ //   {
+	//	for(int i =0; i<text.Length; i++)
+ //       {
+	//		textElement.text += text[i];
+	//		//audioSource.Play();
+	//		yield return new WaitForSeconds(textDelay);
+ //       }
+ //   }
+
 	IEnumerator DisplayTMP_Text(TMP_Text textElement, string text)
-    {
-		for(int i =0; i<text.Length; i++)
-        {
-			textElement.text += text[i];
-			//audioSource.Play();
-			yield return new WaitForSeconds(textDelay);
-        }
-    }
+	{
+
+		textElement.text = text;
+		audioSource.Play();
+		yield return new WaitForSeconds(textDelay);
+
+	}
 
 	// Creates a button showing the choice text
 	Button CreateChoiceView (string text) {
@@ -139,7 +154,7 @@ public class BasicInkExample : MonoBehaviour {
 		for (int i = childCount - 1; i >= 0; --i) {
 			GameObject.Destroy (canvas.transform.GetChild (i).gameObject);
 		}
-	}
+	}        
 
 	[SerializeField]
 	private TextAsset inkJSONAsset = null;
