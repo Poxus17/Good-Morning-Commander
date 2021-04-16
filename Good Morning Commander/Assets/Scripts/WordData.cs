@@ -20,5 +20,3 @@ public struct Word
     public string Description;
     public Sprite Sprite;
 }
-
-
