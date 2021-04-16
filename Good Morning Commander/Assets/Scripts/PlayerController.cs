@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool computerVisible = false;
 
     public GameObject brainCanvas;
+    public TextMeshProUGUI timeCanvas;
     public bool brainVisible = false;
 
     bool activeDimmer;
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log(routineMngr.routine.State);
+            timeCanvas.text = "Time: " + routineMngr.routine.State;
         }
 
         if (Input.GetMouseButtonDown(0))

@@ -11,6 +11,7 @@ public class BasicInkExample : MonoBehaviour {
 	public float textDelay;
 	AudioSource audioSource;
 	public RoutineMngr routineMngr;
+	public TextMeshProUGUI timeCanvas;
 
 
 	void Awake() {
@@ -72,7 +73,7 @@ public class BasicInkExample : MonoBehaviour {
 				RemoveChildren();
 				CreateContentView("End of psych \nsession");
 				routineMngr.routine.State = "Sleep";
-
+				timeCanvas.text = "Time: Sleep";
 			});
 			
 		}
