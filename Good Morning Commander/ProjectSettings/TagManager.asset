@@ -7,7 +7,6 @@ TagManager:
   - Couch
   - Computer
   - Dimmer
-  - Bed
   layers:
   - Default
   - TransparentFX
@@ -17,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - PPL
+  - Background
   - 
   - 
   - 

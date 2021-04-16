@@ -1,19 +1,37 @@
 //EXTERNAL playFunc(varName)
-VAR Bool_Name = false
--> good_evening
 
-=== good_evening ===
-Good evening, Thomas. How are you feeling today?
-* [It's not easy for me to be here, ATOS.] -> anger
+-> dialogue
+
+=== dialogue ===
+Dialogue introduction.
+VAR Bool_Name = false
+(Bool declared)
+
+* [Bool Test] -> AnswerA
 //* [Answer B] -> AnswerB
 
 //////////////////////////////////////////////////////////////////////////////////
 
-=== anger ===
+=== AnswerA ===
 
-I know, Thomas. The orbital life is not for everyone. But when you knew when you signed up for the Rangers that you can only serve on the front for a limited time, right?
+(Dialogue)
 
--> END
+* [Make bool true]  -> G1
+* [Keep bool false]  -> G2
+
+=== G1 ===
+~ Bool_Name = true
+(Bool set true)
+    -> Ending01
+=== G2 ===
+~ Bool_Name = false
+(Bool set false)
+    -> Ending01
+ 
+=== Ending01 ===
+
+*	{ not Bool_Name } Bool Check[] FALSE -> DONE
+* 	{ Bool_Name} Bool Check[] TRUE -> END
 
 //////////////////////////////////////////////////////////////////////////////////
 
