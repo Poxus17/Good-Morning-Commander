@@ -9,7 +9,11 @@ using TMPro;
 public class BasicInkExample : MonoBehaviour {
 	public static event Action<Story> OnCreateStory;
 	public float textDelay;
+
 	AudioSource audioSource; //Audiosource.
+
+	public RoutineMngr routineMngr;
+
 
 	void Awake() {
 		// Remove the default message
@@ -20,7 +24,7 @@ public class BasicInkExample : MonoBehaviour {
 	}
 
 	// Creates a new Story object with the compiled story which we can then play!
-	void StartStory() {
+	public void StartStory() {
 		story = new Story(inkJSONAsset.text);
 		if (OnCreateStory != null) OnCreateStory(story);
 		Ink_Unity_Comm_Handler();
@@ -62,35 +66,38 @@ public class BasicInkExample : MonoBehaviour {
 		}
 
 		// If we've read all the content and there's no choices, the story is finished!
-		else {
-			Button choice = CreateChoiceView("End of story.\nRestart?");
+		else 
+		{			
+			Button choice = CreateChoiceView("Hmm..");
 			choice.onClick.AddListener(delegate {
-				StartStory();
+				//StartStory();
+				RemoveChildren();
+				CreateContentView("End of psych \nsession");
+				routineMngr.routine.State = "Sleep";
+
 			});
+			
 		}
 	}
 	
 	void Ink_Unity_Comm_Handler()
 	{
-		story.ObserveVariable("Bool_Name", (string varName, object newValue) =>
+		story.ObserveVariable("State_Name", (string varName, object newValue) =>
 		{
-			TestFunc_02(varName, (bool)newValue);
+			//TestFunc_02(varName, (bool)newValue);
 		});
 
-		/*story.BindExternalFunction("InkFunc", (string boolName) => {
-			TestFunc_01(boolName);
-		});*/
 	}
 
-	void TestFunc_02(string varName, bool newValue)
-    {
-		Debug.Log("Value of" + varName + " from Ink : " + newValue);
-	}
+	//void TestFunc_02(string varName, bool newValue)
+ //   {
+	//	Debug.Log("Value of" + varName + " from Ink : " + newValue);
+	//}
 	
-	void TestFunc_01(string boolName)
-	{
-		Debug.Log(boolName);
-	}
+	//void TestFunc_01(string boolName)
+	//{
+	//	Debug.Log(boolName);
+	//}
 
 	// When we click the choice button, tell the story to choose that choice!
 	void OnClickChoiceButton (Choice choice) {
