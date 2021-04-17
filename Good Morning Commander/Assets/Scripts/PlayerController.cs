@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     public GameObject indicatorPrefab;
     public RoutineMngr routineMngr;
     public BasicInkExample inkComm;
+
+    GameObject currentMarker; //Current position movement marker
+
     void Start()
     {
         routineMngr.routine.State = "Work";
@@ -93,7 +96,14 @@ public class PlayerController : MonoBehaviour
                     OnMoveStatusChanged(true);
                 }
 
-                Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
+                if(currentMarker == null)
+                {
+                    currentMarker = Instantiate(indicatorPrefab, hit.point, Quaternion.identity);
+                }
+                else
+                {
+                    currentMarker.transform.position = hit.point;
+                }
 
                 if (hit.transform.tag == "Couch" && routineMngr.routine.State == "Psych") //Activate psychology session
                 {

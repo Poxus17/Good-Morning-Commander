@@ -94,5 +94,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatModifier: 0.3
   floatSpeed: 2
-  baseY: 1
-  defaultRotation: {x: 90, y: 0, z: 0, w: 0}
+  baseY: 13
+  defaultRotation: {x: 90, y: 0, z: 0}
