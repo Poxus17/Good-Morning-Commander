@@ -10,16 +10,17 @@ public class TextClicker : MonoBehaviour, IPointerClickHandler
     public TextMeshProUGUI brainText;
     public PlayerController playerController;
     public TMP_Text thisText;
+    public TextMeshProUGUI timeCanvas;
     //public RoutineMngr routineMngr;
     void Start()
     {
         thisText = GetComponentInChildren<TMP_Text>();
-        thisText.text = "Points of interest: <link=SolfieldID><color=blue>Solfield</color></link>,  <link=SixAM><color=blue>SixAM</color></link>, then more text. " +
+        thisText.text = "<b><u>Points of interest</b></u>: Distant Suburb, 08:00, <link=SolfieldID><color=blue>Solfield</color></link>, 20:00, <link=SixAM><color=blue>06:00</color></link>, 01:00, United Nations building, 19:00." +
             "\n\nGood morning, Commander. Mars is planning to assassinate Terran General Henry Vizan with minimum collateral damage. " +
             "Unfortunately, he works in the <b>United Nations building</b>. He arrives to work every day at <b>08:00</b> and leaves not before <b>19:00</b>. " +
             "Once every week, he inspects ongoing procedures at the nearby <link=SolfieldID><color=blue>Solfield military base</color></link>,  where he is taken by car at <b><link=SixAM>06:00</link></b>. " +
             "He lives in a densely populated area, where he returns every day at about <b>20:00</b>, but has also been known to visit a mistress <b>in a distant suburb</b> at about 20:00, in which case he returns home around <b>01:00</b>. " +
-            "\n\nMars is asking <b>when</b>  and <b>where</b> should our drones strike.";
+            "\n\nMars is asking <b>when</b> and <b>where</b> should our drones strike.";
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -48,9 +49,10 @@ public class TextClicker : MonoBehaviour, IPointerClickHandler
                     //{
                     //    playerController.routineMngr.routine.State = "Psych";
                     //}
-                    if (Word.Name == "SixAM" || Word.Name == "Solfield")
+                    if (Word.Name == "6:00" || Word.Name == "Solfield")
                     {
                         playerController.routineMngr.routine.State = "Psych";
+                        timeCanvas.text = "Time: " + playerController.routineMngr.routine.State;
                     }
                     //Debug.Log("linkId variable: " + linkId);
                     //Debug.Log("Link text: " + linkInfo.GetLinkText());
