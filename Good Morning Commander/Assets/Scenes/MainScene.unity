@@ -982,6 +982,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 730263813}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &110649953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1a2468153f4d4fd4f810f836faa277be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1805774200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &110649954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110649953}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.028349292, y: 0.07, z: 0.128}
+  m_Center: {x: -0.008379336, y: 0.035, z: 0.000000014901161}
 --- !u!4 &115930348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d31f0f03aa02e624997434810f399b59,
@@ -3653,6 +3672,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646542967}
   m_CullTransparentMesh: 0
+--- !u!1 &659585120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6fe2a394bf316524cb030023db530d96,
+    type: 3}
+  m_PrefabInstance: {fileID: 1877587620}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &659585121
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659585120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.013055502, y: 0.014044147, z: 0.012465557}
+  m_Center: {x: 0.051307306, y: -0.14504462, z: 0.0062327804}
 --- !u!4 &662787954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4091d87701e07934abf1756a746f961e,
@@ -4599,6 +4637,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1228093466}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &821374446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 08555144d05f61d44a7ae0a905d0de3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1032373740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &821374447
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821374446}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.029137256, y: 0.041332606, z: 0.032287806}
+  m_Center: {x: 0.00029418705, y: 0.0019491669, z: 0.0040012477}
 --- !u!4 &822549155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d31f0f03aa02e624997434810f399b59,
@@ -5998,6 +6055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 08555144d05f61d44a7ae0a905d0de3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Couch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08555144d05f61d44a7ae0a905d0de3d, type: 3}
@@ -12705,6 +12767,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1a2468153f4d4fd4f810f836faa277be,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bed
+      objectReference: {fileID: 0}
     - target: {fileID: 5353151926235518456, guid: 1a2468153f4d4fd4f810f836faa277be,
         type: 3}
       propertyPath: m_Layer
@@ -13011,7 +13078,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1846999104
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13235,6 +13302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6fe2a394bf316524cb030023db530d96,
+        type: 3}
+      propertyPath: m_TagString
+      value: Computer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe2a394bf316524cb030023db530d96, type: 3}
