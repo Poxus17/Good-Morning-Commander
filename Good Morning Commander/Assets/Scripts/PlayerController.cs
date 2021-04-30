@@ -31,8 +31,11 @@ public class PlayerController : MonoBehaviour
     public GameObject indicatorPrefab;
     public RoutineMngr routineMngr;
     public BasicInkExample inkComm;
+    public GameObject ToDoList;
 
     GameObject currentMarker; //Current position movement marker
+
+    Animator animator; //Animator
 
     void Start()
     {
@@ -44,6 +47,8 @@ public class PlayerController : MonoBehaviour
         brainCanvas.SetActive(false);
 
         activeDimmer = false;
+
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -69,8 +74,15 @@ public class PlayerController : MonoBehaviour
             timeCanvas.text = "Time: " + routineMngr.routine.State;
         }
 
+        animator.SetBool("IsWalking", isMoving);
+
         if (Input.GetMouseButtonDown(0))
         {
+            if (ToDoList.activeSelf)
+            {
+                ToDoList.SetActive(false);
+            }
+
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
