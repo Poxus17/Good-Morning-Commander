@@ -13,6 +13,9 @@ public class BasicInkExample : MonoBehaviour {
 	public RoutineMngr routineMngr;
 	public TextMeshProUGUI timeCanvas;
 
+	public delegate void ChangePsyState(bool isIn);
+	public static event ChangePsyState OnChangePsyState;
+
 
 	void Awake() {
 		// Remove the default message
@@ -28,6 +31,11 @@ public class BasicInkExample : MonoBehaviour {
 		if (OnCreateStory != null) OnCreateStory(story);
 		Ink_Unity_Comm_Handler();
 		RefreshView();
+
+		if (OnChangePsyState != null)
+		{
+			OnChangePsyState(true); //Announce start of psychsession
+		}
 	}
 
     private void Update()
@@ -74,6 +82,11 @@ public class BasicInkExample : MonoBehaviour {
 				CreateContentView("End of psych \nsession");
 				routineMngr.routine.State = "Sleep";
 				timeCanvas.text = "Time: Sleep";
+
+				if (OnChangePsyState != null) 
+				{
+					OnChangePsyState(false); //Announce end of psych session
+				}
 			});
 			
 		}

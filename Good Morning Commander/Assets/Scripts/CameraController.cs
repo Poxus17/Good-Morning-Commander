@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Camera mainCam;
-    public Camera psyCam;
+    Camera myCam;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool initialState; //Is initially on?
+
+    private void Start()
     {
-        psyCam.enabled = false;
-        mainCam.enabled = true;
+        myCam = GetComponent<Camera>();
+
+        BasicInkExample.OnChangePsyState += SetEnabledByInitial;
     }
 
-    void SwitchCamera()
+    void SetEnabledByInitial(bool setTo) //This function always sets true initial to input, and false initial to the reverse of the input
     {
-        psyCam.enabled = !psyCam.enabled;
-        mainCam.enabled = !mainCam.enabled;
+        myCam.enabled = (initialState) ? !setTo : setTo;
     }
 }
