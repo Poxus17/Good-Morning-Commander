@@ -123,7 +123,7 @@ public class BasicInkExample : MonoBehaviour {
 		//textClicker.thisText = storyText;
 
 		//storyTMP_Text.text = text;
-		StartCoroutine(DisplayTMP_Text(storyText, text));
+		//StartCoroutine(DisplayTMP_Text(storyText, text));
 	}
 
 	//IEnumerator DisplayTMP_Text(TMP_Text textElement, string text)

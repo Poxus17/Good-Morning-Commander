@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     public delegate void MoveStatusChange(bool status);
     public static event MoveStatusChange OnMoveStatusChanged;
 
+    public delegate void Dim(float factor);
+    public static event Dim OnDim;
+
+    public delegate void Move();
+    public static event Move OnMove;
+
     public GameObject dialogueCanvas;
     public bool dialogueVisible = false;
 
@@ -27,9 +33,6 @@ public class PlayerController : MonoBehaviour
 
     bool activeDimmer;
 
-    public delegate void Dim(float factor);
-    public static event Dim OnDim;
-
     public GameObject indicatorPrefab;
     public RoutineMngr routineMngr;
     public BasicInkExample inkComm;
@@ -40,6 +43,8 @@ public class PlayerController : MonoBehaviour
     GameObject currentMarker; //Current position movement marker
 
     Animator animator; //Animator
+
+
 
     void Start()
     {
@@ -65,6 +70,13 @@ public class PlayerController : MonoBehaviour
                 if (OnMoveStatusChanged != null)
                 {
                     OnMoveStatusChanged(false);
+                }
+            }
+            else
+            {
+                if(OnMove != null)
+                {
+                    OnMove();
                 }
             }
         }
