@@ -34,7 +34,7 @@ public class BasicInkExample : MonoBehaviour {
 
 		if (OnChangePsyState != null)
 		{
-			OnChangePsyState(true); //Announce start of psychsession
+			OnChangePsyState(true); //Announce start of psych
 		}
 	}
 

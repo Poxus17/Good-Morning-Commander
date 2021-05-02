@@ -35,9 +35,6 @@ public class PlayerController : MonoBehaviour
     public BasicInkExample inkComm;
     public GameObject ToDoList;
 
-    public Camera mainCam;
-    public Camera psyCam;
-
     public GameObject FadeObject;
 
     GameObject currentMarker; //Current position movement marker
@@ -56,10 +53,6 @@ public class PlayerController : MonoBehaviour
         activeDimmer = false;
 
         animator = GetComponent<Animator>();
-
-        psyCam.enabled = false;
-        mainCam.enabled = true;
-
     }
     void Update()
     {
@@ -225,11 +218,5 @@ public class PlayerController : MonoBehaviour
         //    else { allowCouch = false; }
 
         //}
-
-        void SwitchCamera()
-        {
-            psyCam.enabled = !psyCam.enabled;
-            mainCam.enabled = !mainCam.enabled;
-        }
     }
 }
