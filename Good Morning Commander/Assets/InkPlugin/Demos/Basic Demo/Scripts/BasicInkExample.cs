@@ -16,6 +16,9 @@ public class BasicInkExample : MonoBehaviour {
 	public delegate void ChangePsyState(bool isIn);
 	public static event ChangePsyState OnChangePsyState;
 
+	public delegate void RequestFade(bool status, float time);
+	public static event RequestFade OnRequestFade;
+
 
 	void Awake() {
 		// Remove the default message

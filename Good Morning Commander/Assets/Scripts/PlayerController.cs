@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public delegate void Move();
     public static event Move OnMove;
 
+    public delegate void RequestFade(bool status, float time);
+    public static event RequestFade OnRequestFade;
+
     public GameObject dialogueCanvas;
     public bool dialogueVisible = false;
 
@@ -44,7 +47,8 @@ public class PlayerController : MonoBehaviour
 
     Animator animator; //Animator
 
-
+    public delegate void StoredAction();
+    StoredAction PreformOnStop;
 
     void Start()
     {
@@ -71,6 +75,12 @@ public class PlayerController : MonoBehaviour
                 {
                     OnMoveStatusChanged(false);
                 }
+
+                if(PreformOnStop != null)
+                {
+                    PreformOnStop();
+                    PreformOnStop = null;
+                }
             }
             else
             {
@@ -83,11 +93,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleActive_Brain();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log(routineMngr.routine.State);
-            timeCanvas.text = "Time: " + routineMngr.routine.State;
         }
 
         animator.SetBool("IsWalking", isMoving);
@@ -139,8 +144,8 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Couch" && routineMngr.routine.State == "Psych") //Activate psychology session
                 {
                     Debug.Log("[Couch] (Ink on/off code)");
-                    ToggleActive_Dialogue();
-                    inkComm.StartStory();
+                    
+                    PreformOnStop = ToggleActive_Dialogue;
                     if (brainVisible == true)
                     {
                         ToggleActive_Brain();
@@ -171,6 +176,15 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Bed" && routineMngr.routine.State == "Sleep") //Activate Work Terminal
                 {
                     routineMngr.routine.State = "Work";
+                    if(OnRequestFade != null)
+                    {
+                        OnRequestFade(false, 1);
+                    }
+                    timeCanvas.text = "Time: " + routineMngr.routine.State;
+                    if (OnRequestFade != null)
+                    {
+                        OnRequestFade(true, 1);
+                    }
                 }
 
                 if (hit.transform.tag == "Dimmer")
@@ -199,7 +213,7 @@ public class PlayerController : MonoBehaviour
         void ToggleActive_Dialogue()
         {
             if (dialogueVisible == false)
-            { dialogueCanvas.SetActive(true); dialogueVisible = true; return;} 
+            { dialogueCanvas.SetActive(true); dialogueVisible = true; inkComm.StartStory(); return; } 
             if (dialogueVisible == true)
             { dialogueCanvas.SetActive(false); dialogueVisible = false; } 
         }
@@ -218,6 +232,9 @@ public class PlayerController : MonoBehaviour
             if (brainVisible == true)
             { brainCanvas.SetActive(false); brainVisible = false; }
         }
+
+
+
         //bool allowCouch = false;
 
         //void OnCollisionEnter(Collision collision)
