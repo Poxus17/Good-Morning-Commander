@@ -137,7 +137,8 @@ public class PlayerController : MonoBehaviour
                 }
                 #endregion
 
-                navMeshAgent.SetDestination(hit.point);
+                Vector3 adjustY = new Vector3(hit.point.x, -0.22f, hit.point.z);
+                navMeshAgent.SetDestination(adjustY);
                 isMoving = true;
                 
                 if (OnMoveStatusChanged != null)
