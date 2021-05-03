@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public delegate void Move();
     public static event Move OnMove;
 
-    public delegate void RequestFade(bool status, float time);
+    public delegate void RequestFade(float time);
     public static event RequestFade OnRequestFade;
 
     public GameObject dialogueCanvas;
@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
 
     public delegate void StoredAction();
     StoredAction PreformOnStop;
+    List<StoredAction> line;
+    bool nextInLine;
+
 
     void Start()
     {
@@ -62,9 +65,18 @@ public class PlayerController : MonoBehaviour
         activeDimmer = false;
 
         animator = GetComponent<Animator>();
+        nextInLine = false;
+        line = new List<StoredAction>();
     }
     void Update()
     {
+
+        if (nextInLine)
+        {
+            nextInLine = false;
+            line.RemoveAt(0);
+            if (line.Count != 0) { line[0](); }
+        }
 
         if (isMoving)
         {
@@ -90,6 +102,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleActive_Brain();
@@ -161,7 +174,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Computer" && routineMngr.routine.State == "Work") //Activate Work Terminal
                 {
                     Debug.Log("[Computer] (Ink on/off code)");
-                    ToggleActive_Computer();
+                    PreformOnStop = ToggleActive_Computer;
                     if(brainVisible == true)
                     {
                         ToggleActive_Brain();
@@ -176,15 +189,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Bed" && routineMngr.routine.State == "Sleep") //Activate Work Terminal
                 {
                     routineMngr.routine.State = "Work";
-                    if(OnRequestFade != null)
-                    {
-                        OnRequestFade(false, 1);
-                    }
-                    timeCanvas.text = "Time: " + routineMngr.routine.State;
-                    if (OnRequestFade != null)
-                    {
-                        OnRequestFade(true, 1);
-                    }
+                    PreformOnStop = SleepFade;
                 }
 
                 if (hit.transform.tag == "Dimmer")
@@ -207,6 +212,30 @@ public class PlayerController : MonoBehaviour
             if(OnDim != null) //If this event has subscribers
             {
                 OnDim(Input.GetAxis("Mouse Y"));
+            }
+        }
+
+        void SleepFade()
+        {
+            line.Add(SendFadeRequest);
+            line.Add(DisplayTime);
+            line.Add(SendFadeRequest);
+
+            line[0]();
+        }
+
+        void DisplayTime()
+        {
+            timeCanvas.text = "Time: " + routineMngr.routine.State;
+            nextInLine = true;
+        }
+
+        void SendFadeRequest()
+        {
+            if (OnRequestFade != null)
+            {
+                OnRequestFade(2);
+                StartCoroutine(Timer(2));
             }
         }
 
@@ -233,6 +262,17 @@ public class PlayerController : MonoBehaviour
             { brainCanvas.SetActive(false); brainVisible = false; }
         }
 
+        IEnumerator Timer(float time)
+        {
+            float deltaTime = 0;
+
+            while(deltaTime < time)
+            {
+                deltaTime += Time.deltaTime;
+                yield return null;
+            }
+            nextInLine = true;
+        }
 
 
         //bool allowCouch = false;

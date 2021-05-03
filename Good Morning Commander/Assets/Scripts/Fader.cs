@@ -7,14 +7,16 @@ public class Fader : MonoBehaviour
 {
     float FadeTime;
     Image image; //image
+    bool state;
 
     private void Start()
     {
         image = GetComponent<Image>();
         PlayerController.OnRequestFade += ProccessFade;
+        state = false;
     }
 
-    void ProccessFade(bool state, float time)
+    void ProccessFade(float time)
     {
         FadeTime = time;
 
@@ -22,10 +24,12 @@ public class Fader : MonoBehaviour
 
         if (state)
         {
+            state = false;
             StartCoroutine("FadeIn");
         }
         else
         {
+            state = true;
             StartCoroutine("FadeOut");
         }
     }
@@ -56,5 +60,7 @@ public class Fader : MonoBehaviour
             yield return null;
             deltaTime += Time.deltaTime;
         }
+
+        image.enabled = false;
     }
 }
