@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public delegate void Move();
     public static event Move OnMove;
 
+    public delegate void RequestFade(float time);
+    public static event RequestFade OnRequestFade;
+
     public GameObject dialogueCanvas;
     public bool dialogueVisible = false;
 
@@ -44,6 +47,10 @@ public class PlayerController : MonoBehaviour
 
     Animator animator; //Animator
 
+    public delegate void StoredAction();
+    StoredAction PreformOnStop;
+    List<StoredAction> line;
+    bool nextInLine;
 
 
     void Start()
@@ -58,9 +65,18 @@ public class PlayerController : MonoBehaviour
         activeDimmer = false;
 
         animator = GetComponent<Animator>();
+        nextInLine = false;
+        line = new List<StoredAction>();
     }
     void Update()
     {
+
+        if (nextInLine)
+        {
+            nextInLine = false;
+            line.RemoveAt(0);
+            if (line.Count != 0) { line[0](); }
+        }
 
         if (isMoving)
         {
@@ -71,6 +87,12 @@ public class PlayerController : MonoBehaviour
                 {
                     OnMoveStatusChanged(false);
                 }
+
+                if(PreformOnStop != null)
+                {
+                    PreformOnStop();
+                    PreformOnStop = null;
+                }
             }
             else
             {
@@ -80,14 +102,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleActive_Brain();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log(routineMngr.routine.State);
-            timeCanvas.text = "Time: " + routineMngr.routine.State;
         }
 
         animator.SetBool("IsWalking", isMoving);
@@ -139,8 +157,8 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Couch" && routineMngr.routine.State == "Psych") //Activate psychology session
                 {
                     Debug.Log("[Couch] (Ink on/off code)");
-                    ToggleActive_Dialogue();
-                    inkComm.StartStory();
+                    
+                    PreformOnStop = ToggleActive_Dialogue;
                     if (brainVisible == true)
                     {
                         ToggleActive_Brain();
@@ -156,7 +174,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Computer" && routineMngr.routine.State == "Work") //Activate Work Terminal
                 {
                     Debug.Log("[Computer] (Ink on/off code)");
-                    ToggleActive_Computer();
+                    PreformOnStop = ToggleActive_Computer;
                     if(brainVisible == true)
                     {
                         ToggleActive_Brain();
@@ -171,6 +189,7 @@ public class PlayerController : MonoBehaviour
                 if (hit.transform.tag == "Bed" && routineMngr.routine.State == "Sleep") //Activate Work Terminal
                 {
                     routineMngr.routine.State = "Work";
+                    PreformOnStop = SleepFade;
                 }
 
                 if (hit.transform.tag == "Dimmer")
@@ -196,10 +215,34 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        void SleepFade()
+        {
+            line.Add(SendFadeRequest);
+            line.Add(DisplayTime);
+            line.Add(SendFadeRequest);
+
+            line[0]();
+        }
+
+        void DisplayTime()
+        {
+            timeCanvas.text = "Time: " + routineMngr.routine.State;
+            nextInLine = true;
+        }
+
+        void SendFadeRequest()
+        {
+            if (OnRequestFade != null)
+            {
+                OnRequestFade(2);
+                StartCoroutine(Timer(2));
+            }
+        }
+
         void ToggleActive_Dialogue()
         {
             if (dialogueVisible == false)
-            { dialogueCanvas.SetActive(true); dialogueVisible = true; return;} 
+            { dialogueCanvas.SetActive(true); dialogueVisible = true; inkComm.StartStory(); return; } 
             if (dialogueVisible == true)
             { dialogueCanvas.SetActive(false); dialogueVisible = false; } 
         }
@@ -218,6 +261,20 @@ public class PlayerController : MonoBehaviour
             if (brainVisible == true)
             { brainCanvas.SetActive(false); brainVisible = false; }
         }
+
+        IEnumerator Timer(float time)
+        {
+            float deltaTime = 0;
+
+            while(deltaTime < time)
+            {
+                deltaTime += Time.deltaTime;
+                yield return null;
+            }
+            nextInLine = true;
+        }
+
+
         //bool allowCouch = false;
 
         //void OnCollisionEnter(Collision collision)
