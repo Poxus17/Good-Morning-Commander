@@ -9135,7 +9135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 2122173746}
   brainText: {fileID: 374365059}
-  playerController: {fileID: 0}
+  playerController: {fileID: 1592576121}
   thisText: {fileID: 0}
   timeCanvas: {fileID: 42151914}
 --- !u!1001 &1266147059
