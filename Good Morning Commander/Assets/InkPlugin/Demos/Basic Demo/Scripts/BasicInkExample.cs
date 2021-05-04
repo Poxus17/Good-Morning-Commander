@@ -143,7 +143,7 @@ public class BasicInkExample : MonoBehaviour {
 	{
 
 		textElement.text = text;
-		audioSource.Play();
+		//audioSource.Play();
 		yield return new WaitForSeconds(textDelay);
 
 	}

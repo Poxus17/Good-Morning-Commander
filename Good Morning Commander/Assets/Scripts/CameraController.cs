@@ -19,4 +19,9 @@ public class CameraController : MonoBehaviour
     {
         myCam.enabled = (initialState) ? !setTo : setTo;
     }
+
+    private void OnDestroy()
+    {
+        BasicInkExample.OnChangePsyState -= SetEnabledByInitial;
+    }
 }
