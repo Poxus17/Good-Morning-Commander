@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: d38b2f9eea1a0934ca689415c642ba42,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8958,13 +8958,13 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
 --- !u!114 &1261360523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8980,7 +8980,7 @@ MonoBehaviour:
   textDelay: 0.06
   routineMngr: {fileID: 1656134933}
   timeCanvas: {fileID: 42151914}
-  inkJSONAsset: {fileID: 4900000, guid: ac1bc22f347c471449c711c828098bf2, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: eb18891670f9a3b4d9fe251cf4c0dd5f, type: 3}
   canvas: {fileID: 1261360524}
   textPrefab: {fileID: 11456674, guid: 1aab6ef84d87c416f8f0b3e1ef3d77d2, type: 3}
   buttonPrefab: {fileID: 11455116, guid: 37c108a6c38964f79a6621eccb33ddc1, type: 3}
@@ -9020,10 +9020,10 @@ RectTransform:
   m_Father: {fileID: 1537498217}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 956, y: 271.93347}
-  m_SizeDelta: {x: 962.00006, y: 272.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -4, y: -118.06653}
+  m_SizeDelta: {x: 962, y: 272.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &1261360526
 AudioSource:
@@ -13793,6 +13793,28 @@ PrefabInstance:
       propertyPath: m_text
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4304041637024733888, guid: 46c44c880de9d9a4aa4a7426f45a050a,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304041637024733888, guid: 46c44c880de9d9a4aa4a7426f45a050a,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: d5a3152a269f1cf42ac423480c13ee4f,
+        type: 2}
+    - target: {fileID: 4304041637024733888, guid: 46c44c880de9d9a4aa4a7426f45a050a,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304041637024733888, guid: 46c44c880de9d9a4aa4a7426f45a050a,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1357278317222497223, guid: d5a3152a269f1cf42ac423480c13ee4f,
+        type: 2}
     - target: {fileID: 4304041637024733889, guid: 46c44c880de9d9a4aa4a7426f45a050a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -13836,7 +13858,7 @@ PrefabInstance:
     - target: {fileID: 4304041637024733889, guid: 46c44c880de9d9a4aa4a7426f45a050a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4304041637024733889, guid: 46c44c880de9d9a4aa4a7426f45a050a,
         type: 3}
